@@ -1,3 +1,123 @@
-<h1>
-  {{title}}
-</h1>
+
+
+<div  style="margin-left: 7em; margin-right:7em; "  class="container-fluid; ">
+    <img src="rsz_1rsz_kea_logo.png" class="img-responsive" alt="logo">
+    <h3>Internship form</h3>
+
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <div class="row">
+
+            <div class="col-md-6">
+                <div>
+                    <label for="firstname">First name</label><br>
+                    <input style="width: 30em" class="form-control input-sm" type="text" name="firstname" id="firstname" [formControl]="firstname">
+                    <div [hidden]="firstname.valid || firstname.untouched">
+                        <div [hidden]="!firstname.hasError('required')">First name is required</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div>
+                    <label for="lastname">Last name</label><br>
+                    <input style="width: 30em" class="form-control input-sm" type="text" name="lastname" id="lastname" [formControl]="lastname">
+                    <div [hidden]="lastname.valid || lastname.untouched">
+                        <div [hidden]="!lastname.hasError('required')">Last name is required</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-6">
+                <div>
+                    <label for="internship">ID of internship agreement</label><br>
+                    <input style="width: 30em" class="form-control input-sm" type="text" name="internship" id="internship" [formControl]="internship">
+                    <div [hidden]="internship.valid || internship.untouched">
+                        <div [hidden]="!internship.hasError('required')">Internship id is required</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div>
+                    <label for="company">Company you visited</label><br>
+                    <input style="width: 30em" class="form-control input-sm" type="text" name="company" id="company" [formControl]="company">
+                    <div [hidden]="company.valid || company.untouched">
+                        <div [hidden]="!company.hasError('required')">Company name is required</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-6">
+                <div>
+                    <label  for="requires">Company's competence needs</label><br>
+                    <input style="width: 20em; height:5em" class="form-control input-lg" type="text" name="requires" id="requires" [formControl]="requires">
+                    <div [hidden]="requires.valid || requires.untouched">
+                        <div [hidden]="!requires.hasError('required')">Competences required</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div>
+                    <label for="skills">Students's competencies - max 1.000 characters</label><br>
+                    <input style="width: 20em; height:5em" class="form-control input-lg" type="text" name="skills" id="skills" [formControl]="skills">
+                    <div [hidden]="!skills.hasError('maxlength')">Description can not be longer than 1000 characters.</div>
+                    <div [hidden]="skills.valid || skills.untouched">
+                        <div [hidden]="!skills.hasError('required')">Company name is required</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div>
+            <label for="opportunities">Cooperation opportunities with company</label><br>
+            <input style="width: 30em" class="form-control input-sm" type="text" name="opportunities" id="opportunities" [formControl]="opportunities">
+            <div [hidden]="opportunities.valid || opportunities.untouched">
+                <div [hidden]="!opportunities.hasError('required')"> </div>
+            </div>
+        </div>
+
+
+        <br>
+        <div>
+            <label for="username">Kea email</label><br>
+            <input style="width: 30em" class="form-control input-sm" type="text" name="username" id="username" [formControl]="username">
+            <div [hidden]="username.valid || username.untouched">
+                <div [hidden]="!username.hasError('minlength')">Email can not be shorter than 5 characters.</div>
+                <div [hidden]="!username.hasError('required')">Email is required.</div>
+            </div>
+        </div>
+
+        <br>
+        <div >
+            <label for="password">Password</label><br>
+            <input style="width: 30em" class="form-control input-sm" type="password" name="password" id="password" [formControl]="password">
+            <div [hidden]="password.valid || password.untouched">
+                <div [hidden]="!password.hasError('required')">The password is required.</div>
+                <div [hidden]="!password.hasError('needsExclamation')">
+                    Your password must have an exclamation mark!
+                </div>
+            </div>
+        </div>
+        <br>
+        <button class="btn btn-primary" type="submit"  [disabled]="!loginForm.valid">Submit</button>
+
+    </form>
+</div>
+
+<br>
+
+<div class="container">
+    <button routerLink="/about">About</button>
+    <button routerLink="/internships">Internships</button>
+    <router-outlet></router-outlet>
+
+</div>
+<br>
+<br>
+<br>
